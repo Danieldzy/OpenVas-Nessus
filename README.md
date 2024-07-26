@@ -58,7 +58,7 @@ You can initiate your scan by going to the Scans tab and selecting New Task. Nam
 <br />
 After saving the scan task, click the triangle start button below to initiate the scan (It may take a longer time depending on your Kali resources). Once the scan is complete, you can download the scan report from the Scans tab by selecting Reports, clicking on the report name, and then clicking the Download Filtered Report icon. Please find the uploaded report in this repository, The results include the CVSS score, mitigation solutions, affected software/OS, CVE references, and other valuable details.
 <br />
-
+<img src="https://imgur.com/GOGSJpj.png" height="80%" width="80%" alt=""/>
 <br />
 Note on the report it says "10.0.2.15 - METASPLOITABLE SSH Failure Protocol SSH, Port 22, User msfadmin : Login failure". This means that Kali Linux is blocking the SSH port 22 on Metasploitable due to outdated encryption methods. If you try to connect the Metasploitable using "ssh msfadmin@10.0.2.15" command, the error message "Unable to negotiate with 10.0.2.15 port 22: no matching host key type found. Their offer: ssh-rsa,ssh-dss" indicates a mismatch in keys and outdated encryption, specifically ssh-rsa and ssh-dss, which are considered insecure. This results in an Unauthenticated Scan Report, even though a correct credential was provided. Despite this, the scan still identified 69 vulnerabilities, with 24 of them rated high in CVSS scores.
 <br />
