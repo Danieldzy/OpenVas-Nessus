@@ -45,9 +45,9 @@ First we create new credential. To add a credential for an authenticated scan in
 Then we create new Host and target. To add a host in GVM, go to the Assets tab, select Hosts, click on the Add New Host icon at the top left of the screen, name the host Metasploitable, and type in its IP address.   <br/>
 <img src="https://imgur.com/EI849fV.png" height="80%" width="80%" alt="Add New Host"/>
 <br />
-For new target, go to the Configuration tab, select Targets, click on the Add New Target icon at the top left of the screen, name the target, I name it as a 'Cred' since it is an authenticated scan. In Credentials for authenticated checks, select SSH since Metasploiable is based on ubuntu Linux, and select the Credential you just created. For Port Lists, I choose the Nmap option instead of IANA because it scans more ports, making it better suited for an intense scan.
+For new target, go to the Configuration tab, select Targets, click on the Add New Target icon at the top left of the screen, name the target, I name it as a 'Cred' since it is an authenticated scan. Manually type in the IP address. In Credentials for authenticated checks, select SSH since Metasploiable is based on ubuntu Linux, and select the Credential you just created. For Port Lists, I choose the Nmap option instead of IANA because it scans more ports, making it better suited for an intense scan.
 <br />
-<img src="https://imgur.com/vz3ZUIf.png" height="80%" width="80%" alt="Add New Target"/>
+<img src="https://imgur.com/ayTm11U.png" height="80%" width="80%" alt="Add New Target"/>
 <br />
 
 
