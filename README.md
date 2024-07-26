@@ -1,5 +1,8 @@
 <h1>OpenVas scan for vulnerability</h1>
 
+<h2>Considerations</h2>
+
+Conducting a vulnerability scan can consume significant resources on both your host and target systems, potentially causing system downtime if not managed properly. As a Cybersecurity professional, it is crucial to understand your environment thoroughly before initiating such scans, adhering to GRC standards. Ensure clear communication with your manager and schedule scans for off-peak hours to reduce production impact. Begin by testing in a staging environment, and if you plan to automate scans, first conduct manual tests in a smaller production environment to verify that everything runs smoothly. It is crucial that all stakeholders are informed about the scan and understand the potential impact.
 
 <h2>Description</h2>
 The project involves two virtual machines: Kali Linux (with the IP address 10.0.2.8) and Metasploitable (with the IP address 10.0.2.15). An authenticated scan was executed using OpenVAS from the Kali Linux VM, targeting the Metasploitable VM, and a report was generated to identify vulnerabilities.
@@ -26,47 +29,36 @@ The Diagram: <br/>
 
 
 
+<br/>Run OpenVas on Kali Linux use the command:sudo gvm-start, go to Administration tab, and check the Feed Status, make sure the feed has been updated, you can use the following command to update feed status in the terminal:
+
+<br/>Update NVT: sudo greenbone-nvt-sync
+<br/>Update SCAP: sudo greenbone-scapdata-sync
+<br/>Update CERT: sudo greenbone-certdata-sync<br/>
+<img src="https://imgur.com/2DNteDn.png" height="80%" width="80%" alt="Add Credential"/>
+
 <br />
-Define parse_log function:  <br/>
-<img src="https://i.imgur.com/NQTRYDH.png" height="80%" width="80%" alt="Define parse_log"/>
+First we create new credential. To add a credential for an authenticated scan in GVM, go to the Configuration tab, select Credentials, click on the Add New Credential icon at the top left of the screen, name the credential 'MetasploitableVM'(you can choose other names), and enter the username and password as 'msfadmin'.  <br/>
+<img src="https://imgur.com/p9w7qCN.png" height="80%" width="80%" alt="Add Credential"/>
+<br />
+
+<br />
+Then we create new Host and target. To add a host in GVM, go to the Assets tab, select Hosts, click on the Add New Host icon at the top left of the screen, name the host Metasploitable, and type in its IP address.   <br/>
+<img src="https://imgur.com/EI849fV.png" height="80%" width="80%" alt="Add New Host"/>
+<br />
+For new target, go to the Configuration tab, select Targets, click on the Add New Target icon at the top left of the screen, name the target, I name it as a 'Cred' since it is an authenticated scan. In Credentials for authenticated checks, select SSH since Metasploiable is based on ubuntu Linux, and select the Credential you just created. For Port Lists, I choose the Nmap option instead of IANA because it scans more ports, making it better suited for an intense scan.
+<br />
+<img src="https://imgur.com/vz3ZUIf.png" height="80%" width="80%" alt="Add New Target"/>
+<br />
+
+
+You can initiate your scan by going to the Scans tab and selecting New Task. Name your scan and choose the target you created (MetasploitableVM Cred in my case). The minimum QoD is set to 70% by default to reduce false positives, but you can adjust this value if needed. Increasing the QoD setting generally improves the accuracy of the scan and reduces the likelihood of false positives, it may also reduce the number of vulnerabilities detected. For Scan Config, choose Full and Fast, it combines a comprehensive scan with optimizations for speed. Other Scan Config options you can find more detail here: https://docs.greenbone.net/GSM-Manual/gos-21.04/en/scanning.html#scanconfigs
+<br/>
+<img src="https://imgur.com/V4m6fWx.png" height="80%" width="80%" alt="Start Scan"/>
+
+<br />
+After saving the scan task, click the triangle start button below to initiate the scan. Once the scan is complete, you can download the scan report from the Scans tab by selecting Reports, clicking on the report name, and then clicking the Download Filtered Report icon. Please find the uploaded report in this repository, The results include the CVSS score, mitigation solutions, affected software/OS, CVE references, and other valuable details.
+<br />
 
 
 
-<br />
-Print out parse_log function:  <br/>
-<img src="https://i.imgur.com/2YCbRSG.png" height="80%" width="80%" alt="Print out parse_log function"/>
-<br />
-<br />
-Format the output, and print out the dictionary that we need:  <br/>
-<img src="https://i.imgur.com/D8rkEpp.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-<br />
-<br />
 
-
-The final output is a dictionary that filters out error codes 403 and 404 along with their associated IP addresses and error code counts. The output shows only 2 counts of the 403 error but significantly more counts of the 404 error, with a notable 60 counts of 404 errors from IP address 208.91.156.11.  <br/>
-
-<br />
-<br />
-
-<h1>Use Bash to automate file backup  </h1>
-<br />
-Bash Script is used to back up file member_data.txt, I’ve incorporated a timestamp into the script. This means the filename will bear a new timestamp each time a backup is made, the new file will be saved in /home/Autobackup directory:  <br/>
-<img src="https://i.imgur.com/AOTpcmQ.png" height="80%" width="80%" alt="Backup member_data.txt"/>
-<br />
-<br />
-
-Next, we are creating a Cron job to schedule and automate this backup process Every Wednesday at 12:00 AM. First, we use nano to edit crontab, add the cron command:0 0 * * 3 / home/student/bashbackup.sh:  <br/>
-<img src="https://i.imgur.com/5kkD3GT.png" height="80%" width="80%" alt="Backup member_data.txt"/>
-
-<br />
-
-With these Bash scripts, the system will automatically backup file member_data.txt Every Wednesday at 12:00 AM and save it to the Autobackup directory with a new time stamp.
-<!--
- ```diff
-- text in red
-+ text in green
-! text in orange
-# text in gray
-@@ text in purple (and bold)@@
-```
---!>
