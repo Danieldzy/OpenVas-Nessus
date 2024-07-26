@@ -56,7 +56,7 @@ You can initiate your scan by going to the Scans tab and selecting New Task. Nam
 <img src="https://imgur.com/V4m6fWx.png" height="80%" width="80%" alt="Start Scan"/>
 
 <br />
-After saving the scan task, click the triangle start button below to initiate the scan. Once the scan is complete, you can download the scan report from the Scans tab by selecting Reports, clicking on the report name, and then clicking the Download Filtered Report icon. Please find the uploaded report in this repository, The results include the CVSS score, mitigation solutions, affected software/OS, CVE references, and other valuable details.
+After saving the scan task, click the triangle start button below to initiate the scan (It may take a longer time depending on your Kali resources). Once the scan is complete, you can download the scan report from the Scans tab by selecting Reports, clicking on the report name, and then clicking the Download Filtered Report icon. Please find the uploaded report in this repository, The results include the CVSS score, mitigation solutions, affected software/OS, CVE references, and other valuable details.
 <br />
 
 <br />
