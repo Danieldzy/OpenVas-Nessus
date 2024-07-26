@@ -29,7 +29,7 @@ The Diagram: <br/>
 
 
 
-<br/>Run OpenVas on Kali Linux use the command:sudo gvm-start, go to Administration tab, and check the Feed Status, make sure the feed has been updated, you can use the following command to update feed status in the terminal:
+<br/>Run OpenVas on Kali Linux use the command:sudo gvm-start, go to the Administration tab, and check the Feed Status, make sure the feed has been updated, you can use the following command to update feed status in the terminal:
 
 <br/>Update NVT: sudo greenbone-nvt-sync
 <br/>Update SCAP: sudo greenbone-scapdata-sync
