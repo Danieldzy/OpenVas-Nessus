@@ -1,12 +1,11 @@
-<h1>OpenVas scan for vulnerability</h1>
+<h1>Vulnerability Scan</h1>
 
 <h2>Considerations</h2>
 
 Conducting a vulnerability scan can consume significant resources on both your host and target systems, potentially causing system downtime if not managed properly. As a Cybersecurity professional, it is crucial to understand your environment thoroughly before initiating such scans, adhering to GRC standards. Ensure clear communication with your manager and schedule scans for off-peak hours to reduce production impact. Begin by testing in a staging environment, and if you plan to automate scans, first conduct manual tests in a smaller production environment to verify that everything runs smoothly. It is crucial that all stakeholders are informed about the scan and understand the potential impact.
 
-<h2>Description</h2>
-The project involves two virtual machines: Kali Linux (with the IP address 10.0.2.8) and Metasploitable (with the IP address 10.0.2.15). An authenticated scan was executed using OpenVAS from the Kali Linux VM, targeting the Metasploitable VM, and a report was generated to identify vulnerabilities. Note: the final report is an Unauthenticated Scan report due to Kali blocking the target's SSH port 22, even though the correct credential has been provided. A detailed explanation can be found at the end.
-<br />
+<h2>Part 1</h2>
+The project involves two virtual machines: Windows 11 (10.0.0.61) and Metasploitable (with the IP address 10.0.0.188) with a bridge network. An unauthenticated scan was executed using Tenable Nessus from Windows 11, targeting the Metasploitable VM, and a report was generated to identify vulnerabilities. Note: Part 2 is OpenVas Scan on the same target. Unauthenticated scans were performed by both OpenVAS and Tenable Nessus, with the OpenVAS scan covering more ports than the Tenable Nessus scan. A brief comparison of the reports will be conducted.
 
 
 <h2>Utilities Used</h2>
@@ -16,15 +15,20 @@ The project involves two virtual machines: Kali Linux (with the IP address 10.0.
 
 <h2>Environments Used </h2>
 
+- <b>Windows 11</b> 
 - <b>Kali Linux</b> 
-- <b>Ubuntu Linux</b> 
+- <b>Ubuntu Linux</b>
+
+<h2>Part 2</h2>
+The project involves two virtual machines: Kali Linux (with the IP address 10.0.2.8) and Metasploitable (with the IP address 10.0.2.15). An authenticated scan was executed using OpenVAS from the Kali Linux VM, targeting the Metasploitable VM, and a report was generated to identify vulnerabilities. Note: the final report is an Unauthenticated Scan report due to Kali blocking the target's SSH port 22, even though the correct credential has been provided. A detailed explanation can be found at the end.
+<br />
 
 <h2>Program walk-through:</h2>
 
 
 
 <p align="center">
-The Diagram: <br/>
+Diagram 2: <br/>
 <img src="https://imgur.com/HBmnFE4.png" height="80%" width="80%" alt=""/>
 
 
