@@ -4,7 +4,7 @@
 
 Conducting a vulnerability scan can consume significant resources on both your host and target systems, potentially causing system downtime if not managed properly. As a Cybersecurity professional, it is crucial to understand your environment thoroughly before initiating such scans, adhering to GRC standards. Ensure clear communication with your manager and schedule scans for off-peak hours to reduce production impact. Begin by testing in a staging environment, and if you plan to automate scans, first conduct manual tests in a smaller production environment to verify that everything runs smoothly. It is crucial that all stakeholders are informed about the scan and understand the potential impact.
 
-
+In this 
 
 <h2>Utilities Used</h2>
 
@@ -25,9 +25,38 @@ The project involves two virtual machines: Windows 11 (10.0.0.61) and Metasploit
 
 <p align="center">
 Diagram 1: <br/>
-<img src="https://imgur.com/IGxcgKh.png" height="50%" width="50%" alt=""/>
+<br/><img src="https://imgur.com/IGxcgKh.png" height="50%" width="50%" alt=""/><br/>
 
-  
+
+<br/>First, ping the Metasploitable machine from your Windows 11 system to ensure that both machines are connected via the bridged network.<br/>
+<br/><img src="https://imgur.com/TQfFBTk.png" height="80%" width="80%" alt=""/><br/>
+
+<br/>Download Tenable Nessus, and after the download, verify the hash value of the file. This step is essential to confirm that the file has not been tampered with and maintains its integrity.<br/>
+<br/> Run command: Get-FileHash .\filename.msi on PowerShell or CLI to check the hash value and compare it to the value provided on the Tenable Nessus downloading page.<br/> 
+<br/><img src="https://imgur.com/pgySYFp.png" height="80%" width="80%" alt=""/><br/>
+
+
+<br/>Install Nessus and connect via SSH, Select Show Advanced and Continue to Localhost, you can see from the URL that Nessus runs on Port 8843. Be sure to install the Nessus Essentials (free version), which limits you to scanning fewer than 16 IP addresses at a time. For this lab demonstration, that limitation is sufficient. The Essentials version is robust enough to perform complex scans and deliver accurate reports. You will need an activation key for Nessus, register using your email to get the key.<br/>
+<br/><img src="https://imgur.com/3qCWYdD.png" height="80%" width="80%" alt=""/><br/>
+
+<br/>When you log into Nessus for the first time, the plugins will automatically compile, which you can observe in the top right corner. As information about new vulnerabilities is discovered and released into the general public domain, Tenable, Inc. research staff designs programs to enable Tenable Nessus to detect them. These programs are called plugins. Plugins contain vulnerability information, a generic set of remediation actions, and the algorithm to test for the presence of the security issue. Therefore please patiently wait for the compiling plugin process to finish (20-40 minutes), Please note that to include a specific plugin in a scan, you must choose the "Advanced Scan" option. The "Basic Scan" does not support adding custom plugins.<br/>
+<br/><img src="https://imgur.com/LJmIQbF.png" height="80%" width="80%" alt=""/><br/>
+
+<br/>Select New Scan, Choose The Basic Network Scan template, it is ideal for initial assessments and provides a good overview of potential vulnerabilities with a relatively simple configuration. You can also choose other options for other specific needs:<br/>
+<br/><img src="https://imgur.com/Jyjz52D.png" height="80%" width="80%" alt=""/><br/>
+
+<br/>In Settings, under General, Add the name and target IP for the scan. In the Credential section, add the target(Metasploitable) credentials: msfadmin for both username and password, and choose Authentication method as password. This will conduct an authenticated scan, which provides a more detailed and thorough assessment, potentially identifying more vulnerabilities. However, it may also result in a higher number of false positives.<br/>
+<br/><img src="https://imgur.com/l2QvHbf.png" height="80%" width="80%" alt=""/><br/>
+<br/><img src="https://imgur.com/7syElmX.png" height="80%" width="80%" alt=""/><br/>
+
+<br/>In Settings, under Discovery, you can select either a common ports scan or an all ports scan. Under Assessment, you can choose between a Quick scan or a Complex scan. For this demonstration, I will select the common ports and Quick scan WITHOUT credentials. This choice allows me to compare the scan results with those from Part 2 of this project, where OpenVAS is used on the same target. By analyzing these results, I will provide a comparison of both Nessus and OpenVAS as vulnerability scanning tools.<br/>
+<br/><img src="https://imgur.com/3EwFzlL.png" height="80%" width="80%" alt=""/><br/>
+
+<br/>Click "Launch" to start your first scan. The duration of the scan will vary based on your settings. Once the scan is complete, click on the "My Scans" folder on the left and select your scan name to view the vulnerabilities. You can generate and download the report from there.<br/>
+<br/><img src="https://imgur.com/0QJuIxt.png" height="80%" width="80%" alt=""/><br/>
+
+<br/><br/>
+
 <h2>Part 2</h2>
 The project involves two virtual machines: Kali Linux (with the IP address 10.0.2.8) and Metasploitable (with the IP address 10.0.2.15). An authenticated scan was executed using OpenVAS from the Kali Linux VM, targeting the Metasploitable VM, and a report was generated to identify vulnerabilities. Note: the final report is an Unauthenticated Scan report due to Kali blocking the target's SSH port 22, even though the correct credential has been provided. A detailed explanation can be found at the end.
 <br />
