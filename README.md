@@ -9,7 +9,7 @@ In this project, I used both Nessus and OpenVAS to scan the same target with sim
 <br/>- NFS Exported Share Information Disclosure: At least one of the NFS shares exported by the remote server could be mounted by the scanning host. An attacker may be able to leverage this to read (and possibly write) files on remote host.<br/>
 - Bind Shell Backdoor Detection: A shell(CLI) is listening on the remote port without any authentication being required. An attacker may use it by connecting to the remote port and sending commands directly.<br/>
 
-<br/> I will develop a Risk Assessment Report for the client based on the findings from the Nessus scan, with a focus on delivering clear and professional communication. The Risk Assessment Report can be found in this repository<br/> 
+<br/> I will develop a Risk Assessment Report for the client based on the findings from the Nessus scan, with a focus on delivering clear and professional communication. The Risk Assessment Report can be found in this repository.<br/> 
 
 
 
