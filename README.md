@@ -26,7 +26,7 @@ In this project, I used both Nessus and OpenVAS to scan the same target with sim
 - <b>Ubuntu Linux</b>
 
 <h2>Part 1</h2>
-The project involves two virtual machines: Windows 11 (10.0.0.61) and Metasploitable (with the IP address 10.0.0.188) with a bridge network. An unauthenticated scan was executed using Tenable Nessus from Windows 11, targeting the Metasploitable VM, and a report was generated to identify vulnerabilities. Note: Part 2 is OpenVas Scan on the same target. Unauthenticated scans were performed by both OpenVAS and Tenable Nessus, with the OpenVAS scan covering more ports than the Tenable Nessus scan. A brief comparison of the reports will be conducted.
+The project involves two virtual machines: Windows 11 (10.0.0.61) and Metasploitable (with the IP address 10.0.0.188) within internal network. An unauthenticated scan was executed using Tenable Nessus from Windows 11, targeting the Metasploitable VM, and a report was generated to identify vulnerabilities. Note: Part 2 is OpenVas Scan on the same target. Unauthenticated scans were performed by both OpenVAS and Tenable Nessus, with the OpenVAS scan covering more ports than the Tenable Nessus scan. A brief comparison of the reports will be conducted.
 
 <h2>Program walk-through:</h2>
 
@@ -35,7 +35,7 @@ Diagram 1: <br/>
 <br/><img src="https://imgur.com/IGxcgKh.png" height="50%" width="50%" alt=""/><br/>
 
 
-<br/>First, ping the Metasploitable machine from your Windows 11 system to ensure that both machines are connected via the bridged network.<br/>
+<br/>First, ping the Metasploitable machine from your Windows 11 system to ensure that both machines are connected.<br/>
 <br/><img src="https://imgur.com/TQfFBTk.png" height="80%" width="80%" alt=""/><br/>
 
 <br/>Download Tenable Nessus, and after the download, verify the hash value of the file. This step is essential to confirm that the file has not been tampered with and maintains its integrity.<br/>
